@@ -17,6 +17,9 @@ export default class App extends Component {
   }
 
   handleAddToShelf = (value) => {
+    if (this.state.shelf.includes(value)) {
+      return;
+    }
     this.setState({
       shelf: [...this.state.shelf, value],
     });
@@ -49,7 +52,7 @@ export default class App extends Component {
   };
 
   render() {
-    console.log(this.state.shelf);
+    // console.log(this.state.shelf);
     return (
       <div className="app">
         <Header />
@@ -61,6 +64,7 @@ export default class App extends Component {
           <BookList
             books={this.state.books}
             addToShelf={this.handleAddToShelf}
+            shelf={this.state.shelf}
           />
           <Shelf shelf={this.state.shelf} clearShelf={this.handleClearShelf} />
         </main>
