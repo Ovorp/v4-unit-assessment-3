@@ -26,20 +26,24 @@ export default class SearchBar extends Component {
       <div className="search">
         <input onChange={this.handleUserInput} value={this.state.userInput} />
         <button
+          className="hvr-outline-in"
           onClick={() => {
             this.props.handleFilterList(this.state.userInput);
           }}
         >
           Search
         </button>
-        <button
-          onClick={() => {
-            this.handleClearUserInput();
-            this.props.handleClearSearch();
-          }}
-        >
-          Clear Search
-        </button>
+        {this.state.userInput ? (
+          <button
+            className="hvr-outline-in"
+            onClick={() => {
+              this.handleClearUserInput();
+              this.props.handleClearSearch();
+            }}
+          >
+            Clear Search
+          </button>
+        ) : null}
       </div>
     );
   }

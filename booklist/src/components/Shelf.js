@@ -11,7 +11,9 @@ export default class Shelf extends Component {
         ) : (
           <p>I'm glad you are reading :)</p>
         )}
-        <button onClick={this.props.clearShelf}>Clear</button>
+        <button className="hvr-outline-in" onClick={this.props.clearShelf}>
+          Clear
+        </button>
         <div className="shelf-list">
           <ul>
             {this.props.shelf.map((title, index) => {

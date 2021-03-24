@@ -34,8 +34,8 @@ export default class App extends Component {
   handleFilterList = (input) => {
     const filteredList = this.state.books.filter((val) => {
       if (
-        val.author.toLowerCase().includes(input) ||
-        val.title.toLowerCase().includes(input)
+        val.author.toLowerCase().includes(input.toLowerCase()) ||
+        val.title.toLowerCase().includes(input.toLowerCase())
       ) {
         return val;
       } else return null;
