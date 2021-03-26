@@ -44,6 +44,12 @@ export default class SearchBar extends Component {
             Clear Search
           </button>
         ) : null}
+        <button
+          className="hvr-outline-in"
+          onClick={this.props.handleTurnOnForm}
+        >
+          {!this.props.formOn ? `Add New Book` : `Close Form`}
+        </button>
       </div>
     );
   }

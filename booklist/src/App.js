@@ -5,6 +5,7 @@ import BookList from './components/BookList';
 import Shelf from './components/Shelf';
 import data from './data/data';
 import SearchBar from './components/SearchBar';
+import Form from './components/Form';
 
 export default class App extends Component {
   constructor(props) {
@@ -13,8 +14,12 @@ export default class App extends Component {
     this.state = {
       books: data,
       shelf: [],
+      idNumber: data.length + 1,
+      formOn: false,
     };
   }
+
+  handleAddData = (obj) => {};
 
   handleAddToShelf = (value) => {
     if (this.state.shelf.includes(value)) {
@@ -51,15 +56,36 @@ export default class App extends Component {
     });
   };
 
+  handleAddToBookList = (obj) => {
+    this.setState({
+      books: [...this.state.books, obj],
+    });
+  };
+
+  handleTurnOnForm = () => {
+    this.setState({
+      formOn: !this.state.formOn,
+    });
+  };
+
   render() {
-    // console.log(this.state.shelf);
+    console.log(this.state);
     return (
       <div className="app">
         <Header />
         <SearchBar
           handleFilterList={this.handleFilterList}
           handleClearSearch={this.handleClearSearch}
+          handleTurnOnForm={this.handleTurnOnForm}
+          formOn={this.state.formOn}
         />
+        {this.state.formOn ? (
+          <Form
+            idNumber={this.state.idNumber}
+            handleAddToBookList={this.handleAddToBookList}
+            handleTurnOnForm={this.handleTurnOnForm}
+          />
+        ) : null}
         <main>
           <BookList
             books={this.state.books}
