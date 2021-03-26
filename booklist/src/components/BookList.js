@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ReviewButton from './ReviewButton';
 
 export default class BookList extends Component {
   constructor(props) {
@@ -10,7 +11,7 @@ export default class BookList extends Component {
   }
 
   componentDidUpdate = (prevProps) => {
-    if (prevProps !== this.props) {
+    if (prevProps.shelf !== this.props.shelf) {
       if (this.props.shelf.length === 0) {
         this.setState({
           toDisplay: [],
@@ -19,10 +20,21 @@ export default class BookList extends Component {
     }
   };
 
+  handleDelete = (idToDelete) => {
+    this.props.handleDeleteBook(idToDelete);
+  };
+
   render() {
     const mappedBooks = this.props.books.map((val) => {
       return (
         <li key={val.id}>
+          <button onClick={() => this.handleDelete(val.id)}>Delete Book</button>
+          <ReviewButton
+            books={this.props.books}
+            id={val.id}
+            handleAddReviewToBooks={this.props.handleAddReviewToBooks}
+            reviews={val.reviews}
+          />
           <img
             className={
               this.state.toDisplay.includes(val.id) ? `disabled` : null

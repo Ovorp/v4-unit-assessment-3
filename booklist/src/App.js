@@ -19,8 +19,6 @@ export default class App extends Component {
     };
   }
 
-  handleAddData = (obj) => {};
-
   handleAddToShelf = (value) => {
     if (this.state.shelf.includes(value)) {
       return;
@@ -68,6 +66,27 @@ export default class App extends Component {
     });
   };
 
+  handleDeleteBook = (idToDelete) => {
+    let newBookList = this.state.books.filter((val) => val.id !== idToDelete);
+    this.setState({
+      books: newBookList,
+    });
+  };
+
+  handleAddReviewToBooks = (id, review) => {
+    let booksWithReview = this.state.books.map((val) => {
+      val.reviews = val.reviews ? val.reviews : [];
+      if (val.id === id) {
+        val.reviews.push(review);
+      }
+      return val;
+    });
+
+    this.setState({
+      books: booksWithReview,
+    });
+  };
+
   render() {
     console.log(this.state);
     return (
@@ -91,6 +110,8 @@ export default class App extends Component {
             books={this.state.books}
             addToShelf={this.handleAddToShelf}
             shelf={this.state.shelf}
+            handleDeleteBook={this.handleDeleteBook}
+            handleAddReviewToBooks={this.handleAddReviewToBooks}
           />
           <Shelf shelf={this.state.shelf} clearShelf={this.handleClearShelf} />
         </main>

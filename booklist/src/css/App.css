@@ -151,3 +151,57 @@ img {
   left: -5px;
   opacity: 1;
 }
+
+#review {
+  width: 200px;
+  height: 150px;
+  overflow: auto;
+}
+
+.background-box {
+  top: 0;
+  left: 0;
+  position: fixed;
+  background-color: rgb(0, 0, 0, 0.4);
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+}
+
+.review-box {
+  position: relative;
+  background-color: rgb(253, 248, 241);
+  height: 80%;
+  width: 80%;
+  padding-left: 2%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+#review-list {
+  display: block;
+  width: 100%;
+  overflow: auto;
+  height: 60%;
+}
+
+#review-list li {
+  width: 80%;
+  margin-left: 3%;
+  line-height: 1rem;
+  display: list-item;
+  font-weight: 100;
+  font-size: 0.7rem;
+  margin-top: 3rem;
+  word-wrap: break-word;
+}
+
+.close-button {
+  position: absolute;
+  right: 30px;
+  top: 0px;
+}

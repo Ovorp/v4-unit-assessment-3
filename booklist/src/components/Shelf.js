@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 
 export default class Shelf extends Component {
   render() {
-    console.log(this.props.shelf.length);
     return (
       <div className="shelf">
         <h2>Your Shelf</h2>
