@@ -46,15 +46,21 @@ export default class EditReviewButton extends Component {
           {/* adds new review  */}
 
           {this.state.toShowReviewBox ? (
-            <button onClick={this.handleShowReviewbox}>Add a new review</button>
+            <button
+              className="hvr-outline-in"
+              onClick={this.handleShowReviewbox}
+            >
+              Add a new review
+            </button>
           ) : (
-            <>
+            <div className="text-area">
               <textarea
                 id="review"
                 onChange={this.handleUpdateUserInput}
                 value={this.state.userInput}
               />{' '}
               <button
+                className="hvr-outline-in"
                 onClick={() => {
                   this.handleShowReviewbox();
                   this.props.handleAddReviewToBooks(
@@ -66,9 +72,9 @@ export default class EditReviewButton extends Component {
               >
                 Submit Review
               </button>
-            </>
+            </div>
           )}
-          <button onClick={this.handleShowReviews} className="close-button">
+          <button className="close-button" onClick={this.handleShowReviews}>
             X
           </button>
         </div>
@@ -79,7 +85,9 @@ export default class EditReviewButton extends Component {
       // The button that shows the review and review features
 
       <div>
-        <button onClick={this.handleShowReviews}>See Reviews</button>
+        <button className="hvr-outline-in" onClick={this.handleShowReviews}>
+          See Reviews
+        </button>
         {this.state.toShow ? reviewBox : null}
       </div>
     );

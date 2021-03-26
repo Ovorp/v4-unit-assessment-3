@@ -28,13 +28,6 @@ export default class BookList extends Component {
     const mappedBooks = this.props.books.map((val) => {
       return (
         <li key={val.id}>
-          <button onClick={() => this.handleDelete(val.id)}>Delete Book</button>
-          <ReviewButton
-            books={this.props.books}
-            id={val.id}
-            handleAddReviewToBooks={this.props.handleAddReviewToBooks}
-            reviews={val.reviews}
-          />
           <img
             className={
               this.state.toDisplay.includes(val.id) ? `disabled` : null
@@ -49,6 +42,18 @@ export default class BookList extends Component {
             }}
           />
           <p>{`${val.title} by ${val.author}`}</p>
+          <ReviewButton
+            books={this.props.books}
+            id={val.id}
+            handleAddReviewToBooks={this.props.handleAddReviewToBooks}
+            reviews={val.reviews}
+          />
+          <button
+            className="hvr-outline-in"
+            onClick={() => this.handleDelete(val.id)}
+          >
+            Delete Book
+          </button>
         </li>
       );
     });
